@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - The Kiosco</title>
+    <link rel="stylesheet" href="./src/output.css">
+    <script src="./scripts/app.js" defer></script>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-green-300 text-white text-3xl font-bold h-[50px] w-full shadow-md overflow-hidden p-4 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <a href="administracion.html" class="text-white hover:text-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+            </a>
+            <h1>Gestión de Inventario</h1>
+        </div>
+        <div class="flex gap-8 justify-between items-center">
+            <button id="btn-logout" class="bg-red-500 text-white text-sm px-3 py-1 rounded hover:bg-red-600 transition duration-200">
+                Cerrar sesión
+            </button>
+            <a href="./">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <main class="p-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Productos en Inventario</h2>
+                <button id="btn-agregar-producto" class="bg-blue-500 text-white px-4  rounded-lg hover:bg-blue-600 transition duration-200">
+                    Agregar Producto
+                </button>
+            </div>
+
+            <!-- Filtros -->
+            <div class="mb-4 flex gap-4">
+                <input type="text" id="buscar-producto" placeholder="Buscar producto..." class="border border-gray-300 p-2 rounded-lg flex-1">
+                <select id="filtro-categoria" class="border border-gray-300 p-2 rounded-lg">
+                    <option value="">Todas las categorías</option>
+                    <option value="bebidas">Bebidas</option>
+                    <option value="comida">Comida</option>
+                    <option value="higiene">Higiene</option>
+                    <option value="otros">Otros</option>
+                </select>
+            </div>
+
+            <!-- Tabla de productos -->
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="border border-gray-300 p-3 text-left">Imagen</th>
+                            <th class="border border-gray-300 p-3 text-left">ID</th>
+                            <th class="border border-gray-300 p-3 text-left">Nombre</th>
+                            <th class="border border-gray-300 p-3 text-left">Precio</th>
+                            <th class="border border-gray-300 p-3 text-left">Categoría</th>
+                            <th class="border border-gray-300 p-3 text-left">Stock</th>
+                            <th class="border border-gray-300 p-3 text-left">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-productos">
+                        <tr>
+                            <td class="border border-gray-300 p-3" colspan="7">
+                                <div class="text-center py-4">
+                                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto"></div>
+                                    <p class="mt-2 text-gray-600">Cargando productos...</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para agregar/editar producto -->
+    <div id="modal-producto" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div class="flex items-center justify-center h-full">
+            <div class="bg-white p-6 rounded-lg w-full max-w-md">
+                <h3 id="modal-titulo" class="text-xl font-bold mb-4">Agregar Producto</h3>
+            <form id="form-producto">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
+                    <input type="text" id="producto-nombre" class="w-full border border-gray-300 p-2 rounded-lg" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Precio</label>
+                    <input type="number" step="0.01" id="producto-precio" class="w-full border border-gray-300 p-2 rounded-lg" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Categoría</label>
+                    <select id="producto-categoria" class="w-full border border-gray-300 p-2 rounded-lg" required>
+                        <option value="">Seleccionar categoría</option>
+                        <option value="bebidas">Bebidas</option>
+                        <option value="comida">Comida</option>
+                        <option value="higiene">Higiene</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Stock</label>
+                    <input type="number" id="producto-stock" class="w-full border border-gray-300 p-2 rounded-lg" required>
+                </div>
+                <div class="flex gap-4">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 flex-1">
+                        Guardar
+                    </button>
+                    <button type="button" id="btn-cancelar" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 flex-1">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
