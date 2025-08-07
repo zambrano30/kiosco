@@ -3,108 +3,112 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="./scripts/app.js" defer></script>
+    <title>The Kiosco</title>
     <link rel="stylesheet" href="./src/output.css" />
+    <script src="./scripts/app.js" defer></script>
   </head>
-  <body
-    class="h-screen w-screen flex-col flex justify-center items-center bg-[url(/proyecto-final-fronted/fondo-login.jpg)] font-bold"
-  >
-    <form
-      id="form-login"
-      class="form w-[250px] h-[auto] flex flex-col justify-center items-center gap-2"
+  <body class="justify-center items-center">
+    <header
+      class="bg-green-300 text-white text-3xl font-bold h-[50px] w-full shadow-md overflow-hidden p-4 flex justify-between items-center"
     >
-      <h2 class="text-3xl font-bold mb-8">Login</h2>
-
-      <label for="username" class="block mb-2 text-sm font-medium text-black"
-        >Usuario</label
-      >
-      <input
-        type="text"
-        id="usuario"
-        class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-        placeholder=""
-      />
-      <label for="contraseña" class="block mb-2 text-sm font-medium text-black"
-        >Contraseña</label
-      >
-      <input
-        type="password"
-        id="contrasena"
-        class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-        placeholder=""
-      />
-
-      <button type="submit" class="bg-green-500 text-white rounded-xl px-6 py-1 mt-8 hover:text-green-400 hover:bg-white">
-        Iniciar sesión
-      </button>
-      <div class="bg-white "></div>
-      <section class="flex gap-4 mt-8">
-        <p class="mt-">¿No tienes cuenta aún?</p>
-        <a
-          class="registrarse  text-green-500 rounded-xl hover:text-orange-600 "
-          href="#"
-          >Registrarse</a
+      <h1>The Kiosco</h1>
+      <div class="flex gap-8 items-center">
+        <!-- Botón de administración (solo para administradores) -->
+        <a href="administracion.html" id="btn-admin" class="hidden bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600">
+          Administración
+        </a>
+        
+        <!-- Botón de cerrar sesión -->
+        <button id="btn-logout" class="bg-gray-500 text-white px-3 py-1 rounded text-sm hover:bg-gray-600">
+          Cerrar Sesión
+        </button>
+        
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
         >
-      </section>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+          />
+        </svg>
+
+          <a href="./">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+          /></a>
+        </svg>
+      </div>
+    </header>
+    <form action="" class="flex justify-center items-center my-8">
+      <input type="search" class="border rounded-xl px-4 py-0.5" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+        />
+      </svg>
     </form>
-
-    <form
-      id="form-registro"
-      class="fixed inset-0 registro flex justify-center items-center bg-black/30 hidden"
+    <select
+      name="Categorias"
+      id="categorias"
+      class="mx-auto my-4 block border-gray-500 bg-green-300"
     >
-      <div class="w-[350px] bg-white/90 rounded-xl p-8 flex flex-col text-center gap-2 shadow-lg">
-        <h2 class="text-3xl font-bold mb-8">Registro</h2>
-        <label for="registro_nombre" class="block mb-2 text-sm font-medium text-black">Nombre Completo</label>
-        <input
-          type="text"
-          id="registro_nombre"
-          class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-          placeholder="Nombre completo"
-        />
-       
-        <label for="registro_email" class="block mb-2 text-sm font-medium text-black">Correo Electronico</label>
-        <input
-          type="email"
-          id="registro_correo"
-          class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-          placeholder="Correo"
-        />
-        <label for="telefono" class="block mb-2 text-sm font-medium text-black">Teléfono</label>
-        <input
-          type="text"
-          id="telefono"
-          class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-          placeholder="Teléfono"
-        />
-         <label for="registro_usuario" class="block mb-2 text-sm font-medium text-black">Usuario</label>
-        <input
-          type="text"
-          id="registro_usuario"
-          class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-          placeholder="Usuario"
-        />
-        <label for="registro_contrasena" class="block mb-2 text-sm font-medium text-black">Contraseña</label>
-        <input
-          type="password"
-          id="registro_contrasena"
-          class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-          placeholder="Contraseña"
-        />
-        <label for="registro_contrasena2" class="block mb-2 text-sm font-medium text-black">Confirme contraseña</label>
-        <input
-          type="password"
-          id="registro_contrasena2"
-          class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-          placeholder="Confirmar contraseña"
-        />
+      <option value="">Todas las categorias</option>
+      <option value="Abarrotes">Abarrotes</option>
+      <option value="Bebidas">Bebidas</option>
+      <option value="Carnes">Carnes</option>
+      <option value="Conservas">Conservas</option>
+      <option value="Dulces">Dulces</option>
+      <option value="Frutas">Frutas</option>
+      <option value="Fruta">Fruta</option>
+      <option value="Higiene">Higiene</option>
+      <option value="Lácteos">Lácteos</option>
+      <option value="Limpieza">Limpieza</option>
+      <option value="Panadería">Panadería</option>
+    </select>
+
+    <main class="">
+      <section
+        class="productos grid grid-cols-2 gap-4 w-full col-span-2"
+      ></section>
+      <div class="flex justify-center gap-4 my-6">
         <button
-          type="submit"
-          class="bg-green-500 text-white rounded-xl p-2 px-4 mt-8"
+          id="anterior"
+          class="bg-green-500 text-white rounded-xl px-4 py-2 disabled:opacity-50"
         >
-          Registrarse
+          Anterior
+        </button>
+        <button
+          id="siguiente"
+          class="bg-green-500 text-white rounded-xl px-4 py-2 mt-4 disabled:opacity-50"
+        >
+          Siguiente
         </button>
       </div>
-    </form>
+    </main>
   </body>
 </html>
