@@ -4,108 +4,93 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./scripts/app.js" defer></script>
+    <script src="./scripts/main.js" type="module" defer></script>
     <link rel="stylesheet" href="./src/output.css" />
   </head>
   <body
-    class="h-screen w-screen flex-col flex justify-center items-center bg-[url(/proyecto-final-fronted/fondo-login.jpg)] font-bold"
+    class="min-h-screen flex flex-col justify-center items-center font-bold bg-green-100 sm:bg-[url(/proyecto-final-fronted/login-fondo.jpeg)] sm:bg-cover sm:bg-center"
+    style="background-repeat: no-repeat; background-size: cover; background-position: center;"
   >
     <form
       id="form-login"
-      class="form w-[250px] h-[auto] flex flex-col justify-center items-center gap-2"
+      class="form w-full max-w-[270px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[380px] xl:max-w-[400px] px-4 py-6 sm:px-8 sm:py-10 bg-white/80 rounded-xl shadow-lg flex flex-col justify-center items-center gap-4 self-center sm:self-end sm:mr-0 md:mr-8 lg:mr-16 xl:mr-32"
     >
-      <h2 class="text-3xl font-bold mb-8">Login</h2>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Login</h2>
 
-      <label for="username" class="block mb-2 text-sm font-medium text-black"
-        >Usuario</label
-      >
+      <label for="username" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Usuario</label>
       <input
         type="text"
         id="usuario"
-        class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-        placeholder=""
+        class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+        placeholder="Usuario"
       />
-      <label for="contraseña" class="block mb-2 text-sm font-medium text-black"
-        >Contraseña</label
-      >
+      <label for="contraseña" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Contraseña</label>
       <input
         type="password"
         id="contrasena"
-        class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-        placeholder=""
+        class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+        placeholder="Contraseña"
       />
 
-      <button type="submit" class="bg-green-500 text-white rounded-xl px-6 py-1 mt-8 hover:text-green-400 hover:bg-white">
-        Iniciar sesión
-      </button>
-      <div class="bg-white "></div>
-      <section class="flex gap-4 mt-8">
-        <p class="mt-">¿No tienes cuenta aún?</p>
-        <a
-          class="registrarse  text-green-500 rounded-xl hover:text-orange-600 "
-          href="#"
-          >Registrarse</a
-        >
+      <button type="submit" class="bg-green-500 text-white rounded-xl px-6 py-2 mt-6 hover:text-green-400 hover:bg-white text-base sm:text-lg md:text-xl w-full">Iniciar sesión</button>
+      <section class="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-6 w-full justify-center items-center">
+        <p class="text-base sm:text-lg md:text-xl">¿No tienes cuenta aún?</p>
+        <a class="registrarse text-green-500 rounded-xl hover:text-orange-600 text-base sm:text-lg md:text-xl" href="#">Registrarse</a>
       </section>
     </form>
 
-    <form
+      <form
       id="form-registro"
-      class="fixed inset-0 registro flex justify-center items-center bg-black/30 hidden"
+      class="fixed inset-0 registro flex justify-center items-center bg-black/30 overflow-auto py-4 hidden"
     >
-      <div class="w-[350px] bg-white/90 rounded-xl p-8 flex flex-col text-center gap-2 shadow-lg">
-        <h2 class="text-3xl font-bold mb-8">Registro</h2>
-        <label for="registro_nombre" class="block mb-2 text-sm font-medium text-black">Nombre Completo</label>
+      <div class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl bg-white/90 rounded-xl p-4 sm:p-8 flex flex-col text-center gap-4 shadow-lg max-h-[95vh] overflow-y-auto">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Registro</h2>
+        <label for="registro_nombre" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Nombre Completo</label>
         <input
           type="text"
           id="registro_nombre"
-          class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-          placeholder="Nombre completo"
+          class="bg-green-50 border border-green-500 text-green-900 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 mb-2"
         />
        
-        <label for="registro_email" class="block mb-2 text-sm font-medium text-black">Correo Electronico</label>
+        <label for="registro_email" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Correo Electrónico</label>
         <input
           type="email"
           id="registro_correo"
-          class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-          placeholder="Correo"
+          class="bg-green-50 border border-green-500 text-green-900 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 mb-2"
         />
-        <label for="telefono" class="block mb-2 text-sm font-medium text-black">Teléfono</label>
+        <label for="telefono" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Teléfono</label>
         <input
           type="text"
           id="telefono"
-          class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-          placeholder="Teléfono"
+          class="bg-green-50 border border-green-500 text-green-900 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 mb-2"
         />
-         <label for="registro_usuario" class="block mb-2 text-sm font-medium text-black">Usuario</label>
+        <label for="registro_usuario" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Usuario</label>
         <input
           type="text"
           id="registro_usuario"
-          class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-          placeholder="Usuario"
+          class="bg-green-50 border border-green-500 text-green-900 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 mb-2"
         />
-        <label for="registro_contrasena" class="block mb-2 text-sm font-medium text-black">Contraseña</label>
+        <label for="registro_contrasena" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Contraseña</label>
         <input
           type="password"
           id="registro_contrasena"
-          class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-          placeholder="Contraseña"
+          class="bg-green-50 border border-green-500 text-green-900 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 mb-2"
         />
-        <label for="registro_contrasena2" class="block mb-2 text-sm font-medium text-black">Confirme contraseña</label>
+        <label for="registro_contrasena2" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Confirme contraseña</label>
         <input
           type="password"
           id="registro_contrasena2"
-          class="bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:border-green-500"
-          placeholder="Confirmar contraseña"
+          class="bg-green-50 border border-green-500 text-green-900 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 mb-2"
         />
         <button
           type="submit"
-          class="bg-green-500 text-white rounded-xl p-2 px-4 mt-8"
+          class="bg-green-500 text-white rounded-xl px-6 py-2 mt-6 hover:text-green-400 hover:bg-white text-base sm:text-lg md:text-xl w-full"
         >
           Registrarse
         </button>
       </div>
     </form>
+    
   </body>
 </html>
 

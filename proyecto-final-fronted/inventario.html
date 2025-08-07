@@ -5,43 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario - The Kiosco</title>
     <link rel="stylesheet" href="./src/output.css">
-    <script src="./scripts/app.js" defer></script>
+    <script src="./scripts/main.js" type="module" defer></script>
 </head>
-<body class="bg-gray-100">
-    <header class="bg-green-300 text-white text-3xl font-bold h-[50px] w-full shadow-md overflow-hidden p-4 flex justify-between items-center">
-        <div class="flex items-center gap-4">
-            <a href="administracion.html" class="text-white hover:text-gray-200">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                </svg>
-            </a>
-            <h1>Gestión de Inventario</h1>
-        </div>
-        <div class="flex gap-8 justify-between items-center">
-            <button id="btn-logout" class="bg-red-500 text-white text-sm px-3 py-1 rounded hover:bg-red-600 transition duration-200">
-                Cerrar sesión
-            </button>
-            <a href="./">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+<body class="min-h-screen bg-gray-50/50">
+    <header class="bg-gradient-to-r from-emerald-600 to-emerald-800 text-white w-full shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+            <div class="flex items-center space-x-3">
+                <a href="administracion.html" class="p-2 hover:bg-emerald-700/50 rounded-lg transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                </a>
+                <div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.75 7.5h16.5" />
+                    </svg>
+                    <h1 class="text-2xl md:text-3xl font-bold tracking-tight">Gestión de Inventario</h1>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3 md:space-x-6">
+                <button id="btn-logout" class="bg-red-600 text-white px-4 sm:px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-red-700 transition-all shadow-sm hover:shadow-md active:transform active:scale-95">
+                    <span class="hidden sm:inline">Cerrar Sesión</span>
+                    <span class="sm:hidden">Salir</span>
+                </button>
+                <a href="./" class="p-2.5 hover:bg-emerald-700/50 rounded-lg transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                 </svg>
             </a>
         </div>
     </header>
 
-    <main class="p-6">
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-            <div class="flex justify-between items-center mb-6">
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                 <h2 class="text-2xl font-bold text-gray-800">Productos en Inventario</h2>
-                <button id="btn-agregar-producto" class="bg-blue-500 text-white px-4  rounded-lg hover:bg-blue-600 transition duration-200">
+                <button id="btn-agregar-producto" class="w-full sm:w-auto bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-all shadow-sm hover:shadow-md active:transform active:scale-[0.98] font-medium flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
                     Agregar Producto
                 </button>
             </div>
 
             <!-- Filtros -->
-            <div class="mb-4 flex gap-4">
-                <input type="text" id="buscar-producto" placeholder="Buscar producto..." class="border border-gray-300 p-2 rounded-lg flex-1">
-                <select id="filtro-categoria" class="border border-gray-300 p-2 rounded-lg">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:flex gap-4 mb-8">
+                <div class="relative w-full lg:flex-1">
+                    <input type="text" id="buscar-producto" placeholder="Buscar producto..." 
+                        class="w-full border border-gray-200 rounded-xl px-5 py-3 pr-12 bg-gray-50/50 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute right-4 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+                <select id="filtro-categoria" class="w-full lg:w-56 px-5 py-3 border border-gray-200 rounded-xl bg-gray-50/50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all appearance-none cursor-pointer">
                     <option value="">Todas las categorías</option>
                     <option value="bebidas">Bebidas</option>
                     <option value="comida">Comida</option>

@@ -5,79 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Kiosco</title>
     <link rel="stylesheet" href="./src/output.css" />
-    <script src="./scripts/app.js" defer></script>
+    <script src="./scripts/main.js" type="module" defer></script>
   </head>
-  <body class="justify-center items-center">
-    <header
-      class="bg-green-300 text-white text-3xl font-bold h-[50px] w-full shadow-md overflow-hidden p-4 flex justify-between items-center"
-    >
-      <h1>The Kiosco</h1>
-      <div class="flex gap-8 items-center">
+  <body class="min-h-screen bg-gray-50/50">
+    <header class="bg-gradient-to-r from-emerald-600 to-emerald-800 text-white w-full shadow-lg sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+        <div class="flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <h1 class="text-2xl md:text-3xl font-bold tracking-tight">The Kiosco</h1>
+        </div>
+        <div class="flex items-center space-x-3 md:space-x-6">
         <!-- Botón de administración (solo para administradores) -->
-        <a href="administracion.html" id="btn-admin" class="hidden bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600">
-          Administración
+        <a href="administracion.html" id="btn-admin" class="hidden bg-red-600 text-white px-4 sm:px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-red-700 transition-all shadow-sm hover:shadow-md active:transform active:scale-95">
+          <span class="hidden sm:inline">Administración</span>
+          <span class="sm:hidden">Admin</span>
         </a>
         
         <!-- Botón de cerrar sesión -->
-        <button id="btn-logout" class="bg-gray-500 text-white px-3 py-1 rounded text-sm hover:bg-gray-600">
-          Cerrar Sesión
+        <button id="btn-logout" class="bg-emerald-700 text-white px-4 sm:px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-emerald-800 transition-all shadow-sm hover:shadow-md active:transform active:scale-95">
+          <span class="hidden sm:inline">Cerrar Sesión</span>
+          <span class="sm:hidden">Salir</span>
         </button>
         
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-          />
-        </svg>
+        <button class="relative p-2.5 hover:bg-emerald-700/50 rounded-lg transition-all group active:transform active:scale-95">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+            />
+          </svg>
+          <span class="absolute -top-1 -right-1 bg-red-500 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-sm">0</span>
+        </button>
 
-          <a href="./">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-          /></a>
-        </svg>
+        <a href="./" class="p-2 hover:bg-emerald-700/50 rounded-lg transition-all">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+            />
+          </svg>
+        </a>
       </div>
     </header>
-    <form action="" class="flex justify-center items-center my-8">
-      <input type="search" class="border rounded-xl px-4 py-0.5" />
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="size-6"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+    <div class="max-w-7xl mx-auto px-4 mt-8 mb-12">
+      <form action="" class="relative w-full max-w-2xl mx-auto mb-6">
+        <input 
+          type="search" 
+          class="w-full border border-gray-200 rounded-xl px-5 py-3 pr-12 bg-gray-50/50 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all" 
+          placeholder="Buscar productos..."
         />
-      </svg>
-    </form>
-    <select
-      name="Categorias"
-      id="categorias"
-      class="mx-auto my-4 block border-gray-500 bg-green-300"
-    >
-      <option value="">Todas las categorias</option>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="w-5 h-5 text-gray-400 absolute right-4 top-1/2 transform -translate-y-1/2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+          />
+        </svg>
+      </form>
+      <select
+        name="Categorias"
+        id="categorias"
+        class="w-full max-w-xs mx-auto block px-5 py-3 border border-gray-200 rounded-xl bg-gray-50/50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all appearance-none cursor-pointer"
+      >
+          <option value="">Todas las categorías</option>
       <option value="Abarrotes">Abarrotes</option>
       <option value="Bebidas">Bebidas</option>
       <option value="Carnes">Carnes</option>
@@ -91,22 +106,32 @@
       <option value="Panadería">Panadería</option>
     </select>
 
-    <main class="">
-      <section
-        class="productos grid grid-cols-2 gap-4 w-full col-span-2"
-      ></section>
-      <div class="flex justify-center gap-4 my-6">
+    <main class="max-w-7xl mx-auto px-4 mt-8 pb-12">
+      <section class="productos grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-5 md:gap-6">
+        <!-- Products will be dynamically inserted here -->
+      </section>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 mt-12">
         <button
           id="anterior"
-          class="bg-green-500 text-white rounded-xl px-4 py-2 disabled:opacity-50"
+          class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl px-6 sm:px-8 py-3.5 disabled:opacity-40 disabled:hover:bg-emerald-600 transition-all shadow-sm hover:shadow-md disabled:cursor-not-allowed active:transform active:scale-[0.98]"
         >
-          Anterior
+          <span class="flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            <span class="min-w-[4rem] text-center">Anterior</span>
+          </span>
         </button>
         <button
           id="siguiente"
-          class="bg-green-500 text-white rounded-xl px-4 py-2 mt-4 disabled:opacity-50"
+          class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl px-6 sm:px-8 py-3.5 disabled:opacity-40 disabled:hover:bg-emerald-600 transition-all shadow-sm hover:shadow-md disabled:cursor-not-allowed active:transform active:scale-[0.98]"
         >
-          Siguiente
+          <span class="flex items-center justify-center gap-2">
+            <span class="min-w-[4rem] text-center">Siguiente</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
         </button>
       </div>
     </main>
