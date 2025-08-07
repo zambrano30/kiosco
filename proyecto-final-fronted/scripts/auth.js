@@ -48,6 +48,47 @@ export function verificarEsAdministrador() {
     }
 }
 
+// Función para obtener información del usuario logueado
+export function obtenerInfoUsuario() {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        console.log('🔑 Payload del token:', payload);
+        
+        // Intentar extraer el nombre de diferentes campos posibles
+        const nombre = payload.nombre_usuario || 
+                      payload.username || 
+                      payload.nombre || 
+                      payload.name || 
+                      payload.user_name || 
+                      payload.nombre_completo ||
+                      payload.full_name ||
+                      payload.displayName || 
+                      payload.firstName || 
+                      payload.first_name ||
+                      'Usuario';
+        
+        console.log('👤 Nombre extraído:', nombre);
+        
+        return {
+            id: payload.sub || payload.user_id || payload.id || payload.userId,
+            nombre: nombre,
+            email: payload.email || payload.mail || '',
+            rol: payload.rol || payload.role || 'cliente'
+        };
+    } catch (error) {
+        console.error('Error al obtener info del usuario:', error);
+        return null;
+    }
+}
+
+// Función para verificar si el usuario está logueado (sin redireccionar)
+export function estaLogueado() {
+    const token = localStorage.getItem('token');
+    return Boolean(token);
+}
+
 // Función para cerrar sesión
 export function cerrarSesion() {
     if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
@@ -70,10 +111,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await loginUser(nombre_usuario, contraseña);
                 const payload = JSON.parse(atob(response.access_token.split('.')[1]));
                 
-                if (payload.rol === 'administrador') {
-                    window.location.href = 'administracion.html';
+                // Debug: Mostrar estructura completa del JWT
+                console.log('🎯 ESTRUCTURA COMPLETA DEL JWT AL LOGIN:');
+                console.log('📋 Payload completo:', payload);
+                console.log('🏷️ Campos disponibles:', Object.keys(payload));
+                console.log('👤 Campo rol:', payload.rol);
+                console.log('🔍 Todos los campos que podrían ser nombres:');
+                console.log('  - nombre_usuario:', payload.nombre_usuario);
+                console.log('  - username:', payload.username);
+                console.log('  - nombre:', payload.nombre);
+                console.log('  - name:', payload.name);
+                console.log('  - user_name:', payload.user_name);
+                console.log('  - nombre_completo:', payload.nombre_completo);
+                console.log('  - full_name:', payload.full_name);
+                console.log('  - displayName:', payload.displayName);
+                console.log('  - firstName:', payload.firstName);
+                console.log('  - first_name:', payload.first_name);
+                
+                // Verificar si hay una URL de regreso guardada
+                const urlRegreso = localStorage.getItem('urlRegreso');
+                
+                if (urlRegreso) {
+                    // Limpiar la URL de regreso
+                    localStorage.removeItem('urlRegreso');
+                    window.location.href = urlRegreso;
                 } else {
-                    window.location.href = 'index.html';
+                    // Redirección normal basada en el rol
+                    if (payload.rol === 'administrador') {
+                        window.location.href = 'administracion.html';
+                    } else {
+                        window.location.href = 'index.html';
+                    }
                 }
             } catch (error) {
                 alert(error.message || 'Error en el login');

@@ -9,7 +9,7 @@
 </head>
 <body class="min-h-screen bg-gray-50/50">
     <header class="bg-gradient-to-r from-emerald-600 to-emerald-800 text-white w-full shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 lg:px-0 py-4">
             <div class="flex items-center space-x-3">
                 <a href="administracion.html" class="p-2 hover:bg-emerald-700/50 rounded-lg transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
@@ -18,21 +18,29 @@
                 </a>
                 <div class="flex items-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
-                    <h1 class="text-2xl md:text-3xl font-bold tracking-tight">The Kiosko</h1>
+                    <h1 class="text-2xl md:text-3xl font-bold tracking-tight">Gestión de Ventas</h1>
                 </div>
             </div>
-            <div class="flex items-center space-x-3 md:space-x-6">
-                <button id="btn-logout" class="bg-red-600 text-white px-4 sm:px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-red-700 transition-all shadow-sm hover:shadow-md active:transform active:scale-95">
-                    <span class="hidden sm:inline">Cerrar Sesión</span>
-                    <span class="sm:hidden">Salir</span>
+            <div class="flex items-center space-x-3 md:space-x-4">
+                <!-- Botón para ir a la tienda virtual (solo administradores) -->
+                <a href="./" title="Ir a la Tienda Virtual" class="p-2.5 bg-blue-600 hover:bg-blue-700 rounded-lg transition-all shadow-sm hover:shadow-md active:transform active:scale-95 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.75m-16.5 0h3.75m0 0v-3.75a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-9.75 0V7.332c0-.414.336-.75.75-.75h9.5c0 .414-.336.75-.75.75H2.25V21Z" />
+                    </svg>
+                </a>
+                
+                <button id="btn-logout" class="p-3 bg-red-600 hover:bg-red-700 rounded-lg transition-all shadow-sm hover:shadow-md active:transform active:scale-95 group" title="Cerrar Sesión">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 group-hover:scale-110 transition-transform">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
                 </button>
-                <a href="./" class="p-2.5 hover:bg-emerald-700/50 rounded-lg transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                </svg>
-            </a>
+                <a href="./" class="p-2.5 hover:bg-emerald-700/50 rounded-lg transition-all active:transform active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+                </a>
         </div>
     </header>
 

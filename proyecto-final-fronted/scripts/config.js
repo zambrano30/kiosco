@@ -7,6 +7,8 @@ export const ENDPOINTS = {
         obtener: (id) => `${API_BASE_URL}/productos/${id}`,
         actualizar: (id) => `${API_BASE_URL}/productos/${id}`,
         eliminar: (id) => `${API_BASE_URL}/productos/${id}`,
+        categorias: `${API_BASE_URL}/productos/categorias`,
+        porCategoria: (categoria) => `${API_BASE_URL}/productos?categoria=${encodeURIComponent(categoria)}`,
     },
     auth: {
         login: `${API_BASE_URL}/login`,
@@ -22,6 +24,9 @@ export const ENDPOINTS = {
         obtener: (id) => `${API_BASE_URL}/ventas/${id}`,
         actualizar: (id) => `${API_BASE_URL}/ventas/${id}`,
         eliminar: (id) => `${API_BASE_URL}/ventas/${id}`,
+    },
+    categorias: {
+        listar: `${API_BASE_URL}/categorias`,
     }
 };
 
