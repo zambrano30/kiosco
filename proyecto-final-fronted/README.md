@@ -129,14 +129,10 @@ productos/
 package.json
 ```
 
-### Archivos Excluidos (ver .gitignore)
-- Archivos de prueba y desarrollo
-- Documentación adicional
-- Archivos temporales
-- node_modules/
+
 
 ## Autor
-Proyecto desarrollado como trabajo final.
+Christopher Zambrano
 
 ## Licencia
 Este proyecto es para fines educativos.
