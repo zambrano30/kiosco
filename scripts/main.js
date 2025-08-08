@@ -340,15 +340,15 @@ async function obtenerProductos(categoria = null, pagina = 1) {
             return { success: true, productos: productosOrdenados };
             
         } catch (backendError) {
-
-                console.warn('⚠️ Backend no disponible, usando productos locales:', backendError.message);
-            }
+            console.warn('⚠️ Backend no disponible, usando productos locales:', backendError.message);
+            return { success: false, error: backendError.message };
         }
-        catch (error) {
-            console.error('❌ Error general en obtenerProductos:', error);
-            return { success: false, error: error.message };
-        }
+        
+    } catch (error) {
+        console.error('❌ Error general en obtenerProductos:', error);
+        return { success: false, error: error.message };
     }
+}
 
     // Función para actualizar contador del carrito
         
@@ -651,6 +651,7 @@ function crearContador(productoId, cantidad) {
 
 // Función para mostrar productos mejorada
 async function mostrarProductos(productos = null) {
+    console.log('🎯 mostrarProductos llamada con:', productos?.length || 'null');
     const seccionProductos = document.querySelector('.productos');
     
     if (!seccionProductos) {
@@ -659,10 +660,14 @@ async function mostrarProductos(productos = null) {
         return;
     }
 
+    console.log('✅ Contenedor .productos encontrado');
+
     try {
         // Si no se pasan productos, obtenerlos del backend
         if (!productos) {
+            console.log('🔄 No hay productos, obteniendo del backend...');
             if (productosGlobal.length === 0) {
+                console.log('🌐 Productose globales vacíos, llamando obtenerProductos...');
                 const resultado = await obtenerProductos();
                 
                 if (!resultado.success) {
@@ -684,14 +689,14 @@ async function mostrarProductos(productos = null) {
                 productos = resultado.productos || [];
                 productosGlobal = productos;
                 
-                productos = resultado.productos;
             } else {
+                console.log('📦 Usando productos globales existentes:', productosGlobal.length);
                 productos = productosGlobal;
             }
         }
 
         console.log('✅ Productos para mostrar:', productos?.length || 0);
-        console.log('📋 Lista de productos:', productos);
+        console.log('📋 Primeros 3 productos:', productos?.slice(0, 3) || []);
 
         // Verificar si hay productos para mostrar
         if (!Array.isArray(productos) || productos.length === 0) {
