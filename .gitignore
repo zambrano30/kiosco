@@ -1,0 +1,76 @@
+# Archivos de prueba y testing
+test-backend.html
+CAMBIOS_REALIZADOS.md
+scripts/README-modular.md
+
+# Archivos de documentación (excepto README principal)
+*.md
+!README.md
+
+# Dependencias de Node.js
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de sistema Windows
+desktop.ini
+Thumbs.db
+ehthumbs.db
+
+# Archivos de sistema macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+*.cache
+*.swp
+*.swo
+*~
+
+# Archivos de configuración local y desarrollo
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+config.local.js
+settings.local.json
+
+# IDEs y editores
+.vscode/
+.idea/
+*.code-workspace
+
+# Archivos de backup
+*.bak
+*.backup
+*.orig
+
+# Directorios de build y distribución
+dist/
+build/
+out/
+
+# Archivos CSS generados/compilados
+*.css.map
+src/output.css.map
+
+# Archivos de desarrollo y testing
+test-*.*
+debug-*.*
+*.test.js
+*.spec.js
+
+# Logs del servidor de desarrollo
+server.log
+access.log
+error.log
+*.log

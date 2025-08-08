@@ -1,0 +1,16 @@
+{
+  "name": "proyecto-final-fronted",
+  "version": "1.0.0",
+  "description": "Frontend para The Kiosco",
+  "private": true,
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./src/output.css -w",
+    "build": "tailwindcss -i ./src/input.css -o ./src/output.css"
+  },
+  "keywords": [],
+  "author": "Christopher Zambrano",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^4.1.11"
+  }
+}

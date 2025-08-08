@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* Clase personalizada para line-clamp usando solo Tailwind utilities */
+@layer utilities {
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+}
+
+/* Clases personalizadas para imágenes de productos */
+@layer components {
+  .producto-imagen {
+    @apply object-cover rounded-lg border border-gray-200 shadow-sm;
+    object-position: center;
+    background-color: #f8fafc;
+  }
+  
+  .producto-imagen:hover {
+    @apply shadow-md;
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .imagen-carrito {
+    @apply object-cover rounded-lg border border-gray-100 shadow-sm;
+    object-position: center;
+    background-color: #f8fafc;
+  }
+  
+  .contenedor-imagen {
+    @apply flex-shrink-0 overflow-hidden rounded-lg;
+    background-color: #f8fafc;
+  }
+}
+
+/* Clases personalizadas para imágenes de productos */
+@layer components {
+  .producto-imagen {
+    @apply object-cover rounded-lg border border-gray-200 shadow-sm;
+    object-position: center;
+    background-color: #f8fafc;
+  }
+  
+  .producto-imagen:hover {
+    @apply shadow-md;
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .imagen-carrito {
+    @apply object-cover rounded-lg border border-gray-100 shadow-sm;
+    object-position: center;
+    background-color: #f8fafc;
+  }
+  
+  .contenedor-imagen {
+    @apply flex-shrink-0 overflow-hidden rounded-lg;
+    background-color: #f8fafc;
+  }
+}

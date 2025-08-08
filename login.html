@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    
+    <script src="./scripts/auth-manager.js" defer></script>
+    <script src="./scripts/auth.js" defer type="module"></script>
+    <link rel="stylesheet" href="./src/output.css" />
+  </head>
+  <body
+    class="min-h-screen flex flex-col justify-center items-center font-bold bg-green-100 sm:bg-[url(./login-fondo.jpeg)] sm:bg-cover sm:bg-center"
+    style="background-repeat: no-repeat; background-size: cover; background-position: center;"
+  >
+    <form
+      id="form-login"
+      class="form w-full max-w-[270px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[380px] xl:max-w-[400px] px-4 py-6 sm:px-8 sm:py-10 bg-white/80 rounded-xl shadow-lg flex flex-col justify-center items-center gap-4 self-center sm:self-end sm:mr-0 md:mr-8 lg:mr-16 xl:mr-32"
+    >
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Login</h2>
+
+  <label for="usuario" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Usuario</label>
+      <input
+        type="text"
+        id="usuario"
+        class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+        placeholder="Usuario"
+      />
+  <label for="contrasena" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Contraseña</label>
+      <div class="relative w-full">
+        <input
+          type="password"
+          id="contrasena"
+          class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 pr-10"
+          placeholder="Contraseña"
+          style="padding-right:2.5rem;"
+        />
+        <button type="button" id="toggle-login-password" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;display:flex;align-items:center;background:none;border:none;padding:0;">
+          <svg id="icon-hide-login" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-700">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
+          </svg>
+          <svg id="icon-show-login" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-700" style="display:none;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+          </svg>
+        </button>
+      </div>
+
+      <button type="submit" class="bg-green-500 text-white rounded-xl px-6 py-2 mt-6 hover:text-green-400 hover:bg-white text-base sm:text-lg md:text-xl w-full">Iniciar sesión</button>
+      
+      
+      
+      
+      <section class="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-6 w-full justify-center items-center">
+        <p class="text-base sm:text-lg md:text-xl">¿No tienes cuenta aún?</p>
+        <a class="registrarse text-green-500 rounded-xl hover:text-orange-600 text-base sm:text-lg md:text-xl" href="#">Registrarse</a>
+      </section>
+    </form>
+
+      <form
+      id="form-registro"
+      class="fixed inset-0 registro flex justify-center items-center bg-black/30 overflow-auto py-4 hidden"
+    >
+      <div class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl bg-white/90 rounded-xl p-4 sm:p-8 flex flex-col text-center gap-4 shadow-lg max-h-[95vh] overflow-y-auto">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Registro</h2>
+        <label for="registro_nombre" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Nombre Completo</label>
+        <input
+          type="text"
+          id="registro_nombre"
+          class="bg-green-50 border border-green-500 text-green-900 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 mb-2"
+        />
+       
+  <label for="registro_correo" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Correo Electrónico</label>
+        <input
+          type="email"
+          id="registro_correo"
+          class="bg-green-50 border border-green-500 text-green-900 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 mb-2"
+        />
+        <label for="telefono" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Teléfono</label>
+        <input
+          type="text"
+          id="telefono"
+          class="bg-green-50 border border-green-500 text-green-900 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 mb-2"
+        />
+        <label for="registro_usuario" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Usuario</label>
+        <input
+          type="text"
+          id="registro_usuario"
+          class="bg-green-50 border border-green-500 text-green-900 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 mb-2"
+        />
+        <label for="registro_contrasena" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Contraseña</label>
+        <div class="relative w-full">
+          <input
+            type="password"
+            id="registro_contrasena"
+            class="bg-green-50 border border-green-500 text-green-900 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 pr-10 mb-2"
+          />
+          <button type="button" id="toggle-registro-password" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;display:flex;align-items:center;background:none;border:none;padding:0;">
+            <svg id="icon-hide-registro" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-700">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
+            </svg>
+            <svg id="icon-show-registro" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green-700" style="display:none;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+          </button>
+        </div>
+        <label for="registro_contrasena2" class="block mb-2 text-base sm:text-lg md:text-xl font-medium text-black">Confirme contraseña</label>
+        <input
+          type="password"
+          id="registro_contrasena2"
+          class="bg-green-50 border border-green-500 text-green-900 text-base sm:text-lg md:text-xl rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 mb-2"
+        />
+        <button
+          type="submit"
+          class="bg-green-500 text-white rounded-xl px-6 py-2 mt-6 hover:text-green-400 hover:bg-white text-base sm:text-lg md:text-xl w-full"
+        >
+          Registrarse
+        </button>
+      </div>
+    </form>
+    
+  <script src="./scripts/password-toggle.js" defer></script>
+  <script>
+    // Función para limpiar sesión corrupta desde login
+    function limpiarSesionCorrupta() {
+      console.log('🧹 Limpiando sesión corrupta desde login...');
+      
+      // Limpiar todo lo relacionado con la sesión y más
+      localStorage.clear(); // Limpiar todo el localStorage
+      sessionStorage.clear(); // Limpiar también sessionStorage
+      
+      // Limpiar cookies si existen
+      document.cookie.split(";").forEach(function(c) { 
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+      });
+      
+      // Limpiar cache del navegador si es posible
+      if ('caches' in window) {
+        caches.keys().then(names => {
+          names.forEach(name => {
+            caches.delete(name);
+          });
+        });
+      }
+      
+      console.log('✅ Limpieza completa realizada');
+      console.log('✅ Sesión y datos limpiados completamente. Ahora puedes intentar iniciar sesión de nuevo.');
+      
+      // Recargar la página
+      window.location.reload();
+    }
+  </script>
+  </body>
+</html>
+

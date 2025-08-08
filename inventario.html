@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - The Kiosco</title>
+    <link rel="stylesheet" href="./src/output.css">
+    <script src="./scripts/auth-manager.js" defer></script>
+    <script src="./scripts/inventario.js" defer></script>
+   
+</head>
+<body class="min-h-screen bg-gray-50/50">
+    <header class="bg-gradient-to-r from-emerald-600 to-emerald-800 text-white w-full shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 lg:px-0 py-4">
+            <div class="flex items-center space-x-3">
+                <a href="administracion.html" class="p-2 hover:bg-emerald-700/50 rounded-lg transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                </a>
+                <div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <h1 class="text-2xl md:text-3xl font-bold tracking-tight">Gestión de Inventario</h1>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3 md:space-x-4">
+                <!-- Botón para ir a la tienda virtual (solo administradores) -->
+                <a href="./" title="Ir a la Tienda Virtual" class="p-2.5 bg-blue-600 hover:bg-blue-700 rounded-lg transition-all shadow-sm hover:shadow-md active:transform active:scale-95 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.75m-16.5 0h3.75m0 0v-3.75a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-9.75 0V7.332c0-.414.336-.75.75-.75h9.5c0 .414-.336.75-.75.75H2.25V21Z" />
+                    </svg>
+                </a>
+                
+                <button id="btn-logout" class="p-3 bg-red-600 hover:bg-red-700 rounded-lg transition-all shadow-sm hover:shadow-md active:transform active:scale-95 group" title="Cerrar Sesión">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 group-hover:scale-110 transition-transform">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                </button>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">Productos en Inventario</h2>
+                <button id="btn-agregar-producto" class="w-full sm:w-auto bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-all shadow-sm hover:shadow-md active:transform active:scale-[0.98] font-medium flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    Agregar Producto
+                </button>
+            </div>
+
+            <!-- Filtros -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:flex gap-4 mb-8">
+                <div class="relative w-full lg:flex-1">
+                    <input type="text" id="buscar-producto" placeholder="Buscar producto..." 
+                        class="w-full border border-gray-200 rounded-xl px-5 py-3 pr-12 bg-gray-50/50 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute right-4 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+                <select id="filtro-categoria" class="w-full lg:w-56 px-5 py-3 border border-gray-200 rounded-xl bg-gray-50/50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all appearance-none cursor-pointer">
+                    <option value="">Todas las categorías</option>
+                    <option value="Bebidas">Bebidas</option>
+                    <option value="Comida">Comida</option>
+                    <option value="Higiene">Higiene</option>
+                    <option value="Otros">Otros</option>
+                </select>
+            </div>
+
+           
+            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full divide-y divide-gray-200">
+                        <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
+                            <tr>
+                                <th scope="col" class="px-4 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider w-20">
+                                    <div class="flex items-center justify-center space-x-2">
+                                        <span>ID</span>
+                                        <svg class="w-3 h-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h5a1 1 0 000-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM13 16a1 1 0 102 0v-5.586l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 101.414 1.414L13 10.414V16z"/>
+                                        </svg>
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Producto
+                                </th>
+                                <th scope="col" class="px-4 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider w-32">
+                                    <div class="flex items-center justify-center space-x-1">
+                                        <span>Precio</span>
+                                        <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-4 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider w-28">
+                                    Categoría
+                                </th>
+                                <th scope="col" class="px-4 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider w-32">
+                                    <div class="flex items-center justify-center space-x-1">
+                                        <span>Stock</span>
+                                        <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-4 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider w-24">
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-productos" class="bg-white divide-y divide-gray-200">
+                            <tr class="animate-pulse">
+                                <td colspan="6" class="px-6 py-12 text-center">
+                                    <div class="flex flex-col items-center space-y-4">
+                                        <div class="relative">
+                                            <div class="w-12 h-12 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin"></div>
+                                            <div class="absolute inset-0 flex items-center justify-center">
+                                                <svg class="w-6 h-6 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="text-lg font-semibold text-gray-600">Cargando productos...</p>
+                                            <p class="text-sm text-gray-400 mt-1">Esto puede tomar unos segundos</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para agregar/editar producto -->
+    <div id="modal-producto" class="hidden fixed inset-0 bg-gray-500/50 items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto">
+            <h3 id="modal-titulo" class="text-xl font-bold mb-4">Agregar Producto</h3>
+            <form id="form-producto">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
+                    <input type="text" id="producto-nombre" class="w-full border border-gray-300 p-2 rounded-lg" required>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Descripción</label>
+                    <textarea id="producto-descripcion" class="w-full border border-gray-300 p-2 rounded-lg" rows="2" placeholder="Descripción del producto (opcional)"></textarea>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Precio</label>
+                    <input type="number" step="0.01" id="producto-precio" class="w-full border border-gray-300 p-2 rounded-lg" required>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Categoría</label>
+                    <select id="producto-categoria" class="w-full border border-gray-300 p-2 rounded-lg" required>
+                        <option value="">Seleccionar categoría</option>
+                        <option value="Abarrotes">Abarrotes</option>
+                        <option value="Bebidas">Bebidas</option>
+                        <option value="Carnes">Carnes</option>
+                        <option value="Comida">Comida</option>
+                        <option value="Conservas">Conservas</option>
+                        <option value="Dulces">Dulces</option>
+                        <option value="Frutas">Frutas</option>
+                        <option value="Higiene">Higiene</option>
+                        <option value="Lácteos">Lácteos</option>
+                        <option value="Limpieza">Limpieza</option>
+                        <option value="Panadería">Panadería</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Stock</label>
+                    <input type="number" id="producto-stock" class="w-full border border-gray-300 p-2 rounded-lg" required>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Imagen del producto</label>
+                    <input type="file" id="producto-imagen" accept="image/*" class="w-full border border-gray-300 p-2 rounded-lg">
+                    <p class="text-xs text-gray-500 mt-1">Formatos soportados: JPG, PNG, GIF (máximo 5MB)</p>
+                    <div id="preview-imagen" class="mt-2 hidden">
+                        <img id="img-preview" src="" alt="Vista previa" class="w-32 h-32 object-cover rounded-lg border">
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 mt-6">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 flex-1 font-medium">
+                        Guardar
+                    </button>
+                    <button type="button" id="btn-cancelar" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 flex-1 font-medium">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+   
+</body>
+</html>
