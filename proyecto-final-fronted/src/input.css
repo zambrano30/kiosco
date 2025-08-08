@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Clase personalizada para line-clamp usando solo Tailwind utilities */
+@layer utilities {
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+}

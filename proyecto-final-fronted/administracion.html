@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración</title>
+    <link rel="stylesheet" href="./src/output.css">
+    <script src="./scripts/main.js" type="module" defer></script>
+</head>
+<body class="min-h-screen bg-gray-50/50">
+    <header class="bg-gradient-to-r from-emerald-600 to-emerald-800 text-white w-full shadow-lg sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-4 lg:px-0 py-4">
+        <div class="flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <h1 class="text-2xl md:text-3xl font-bold tracking-tight">The Kiosco</h1>
+        </div>
+        <div class="flex items-center space-x-3 md:space-x-4">
+          <!-- Botón para ir a la tienda virtual (solo administradores) -->
+          <a href="./" title="Ir a la Tienda Virtual" class="p-2.5 bg-blue-600 hover:bg-blue-700 rounded-lg transition-all shadow-sm hover:shadow-md active:transform active:scale-95 group">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.75m-16.5 0h3.75m0 0v-3.75a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-9.75 0V7.332c0-.414.336-.75.75-.75h9.5c0 .414-.336.75-.75.75H2.25V21Z" />
+            </svg>
+          </a>
+          
+          <!-- Botón de cerrar sesión -->
+          <button id="btn-logout" class="p-3 bg-red-600 hover:bg-red-700 rounded-lg transition-all shadow-sm hover:shadow-md active:transform active:scale-95 group" title="Cerrar Sesión">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 group-hover:scale-110 transition-transform">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+          </button>
+
+          <a href="./" class="p-2.5 hover:bg-emerald-700/50 rounded-lg transition-all active:transform active:scale-95">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5 md:w-6 md:h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+              />
+            </svg>
+          </a>
+      </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Pantalla de bienvenida -->
+        <section id="contenido-bienvenida" class="content-section">
+            <div class="text-center py-20">
+                <h2 class="text-3xl font-bold text-gray-700 mb-4">¡Bienvenido al Panel de Administración!</h2>
+                <p class="text-gray-600 mb-8">Selecciona una opción del menú para comenzar a gestionar tu kiosco.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
+                        <div class="text-blue-500 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.75 7.5h16.5-1.5V6a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25v1.5h16.5z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Inventario</h3>
+                        <p class="text-gray-600 mb-4">Gestiona productos, stock y precios de tu kiosco.</p>
+                        <a href="inventario.html" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors inline-block">
+                            Ir a Inventario
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
+                        <div class="text-green-500 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Usuarios</h3>
+                        <p class="text-gray-600 mb-4">Administra empleados, clientes y permisos.</p>
+                        <a href="usuarios.html" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors inline-block">
+                            Ir a Usuarios
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
+                        <div class="text-purple-500 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H4.5m-1.25 0H3v1.5m0-1.5h.75m-.75 0H3v1.5M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Ventas</h3>
+                        <p class="text-gray-600 mb-4">Registra ventas y consulta reportes.</p>
+                        <a href="ventas.html" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 transition-colors inline-block">
+                            Ir a Ventas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+   
+</body>
+</html>

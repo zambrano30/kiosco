@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">                <button id="btn-logout" class="p-3 bg-red-600 hover:bg-red-700 rounded-lg transition-all shadow-sm hover:shadow-md active:transform active:scale-95 group" title="Cerrar Sesión">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 group-hover:scale-110 transition-transform">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>ead>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios - The Kiosco</title>
+    <link rel="stylesheet" href="./src/output.css">
+    <script src="./scripts/main.js" type="module" defer></script>
+</head>
+<body class="min-h-screen bg-gray-50/50">
+    <header class="bg-gradient-to-r from-emerald-600 to-emerald-800 text-white w-full shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-4 lg:px-0 py-4">
+            <div class="flex items-center space-x-3">
+                <a href="administracion.html" class="p-2 hover:bg-emerald-700/50 rounded-lg transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                </a>
+                <div class="flex items-center space-x-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <h1 class="text-2xl md:text-3xl font-bold tracking-tight">Gestión de Usuarios</h1>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3 md:space-x-4">
+                <!-- Botón para ir a la tienda virtual (solo administradores) -->
+                <a href="./" title="Ir a la Tienda Virtual" class="p-2.5 bg-blue-600 hover:bg-blue-700 rounded-lg transition-all shadow-sm hover:shadow-md active:transform active:scale-95 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.75m-16.5 0h3.75m0 0v-3.75a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-9.75 0V7.332c0-.414.336-.75.75-.75h9.5c0 .414-.336.75-.75.75H2.25V21Z" />
+                    </svg>
+                </a>
+                
+                <button id="btn-logout" class="p-2.5 bg-red-600 hover:bg-red-700 rounded-lg transition-all shadow-sm hover:shadow-md active:transform active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1 2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                    </svg>
+                </button>
+                <a href="./" class="p-2.5 hover:bg-emerald-700/50 rounded-lg transition-all active:transform active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+                </a>
+        </div>
+    </header>
+
+    <main class="p-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Gestión de Usuarios</h2>
+                <button id="btn-agregar-usuario" class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-200">
+                    Agregar Usuario
+                </button>
+            </div>
+
+            <!-- Filtros -->
+            <div class="mb-4 flex gap-4">
+                <input type="text" id="buscar-usuario" placeholder="Buscar usuario..." class="border border-gray-300 p-2 rounded-lg flex-1">
+                <select id="filtro-tipo" class="border border-gray-300 p-2 rounded-lg">
+                    <option value="">Todos los tipos</option>
+                    <option value="administrador">Administrador</option>
+                    <option value="comprador">Cliente</option>
+                </select>
+            </div>
+
+            <!-- Tabla de usuarios -->
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="border border-gray-300 p-3 text-left">ID</th>
+                            <th class="border border-gray-300 p-3 text-left">Nombre de Usuario</th>
+                            <th class="border border-gray-300 p-3 text-left">Email</th>
+                            <th class="border border-gray-300 p-3 text-left">Tipo</th>
+                            <th class="border border-gray-300 p-3 text-left">Estado</th>
+                            <th class="border border-gray-300 p-3 text-left">Fecha Registro</th>
+                            <th class="border border-gray-300 p-3 text-left">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-usuarios">
+                        <tr>
+                            <td class="border border-gray-300 p-3" colspan="7">
+                                <div class="text-center py-8">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                                    </svg>
+                                    <h3 class="mt-2 text-sm font-medium text-gray-900">No hay usuarios</h3>
+                                    <p class="mt-1 text-sm text-gray-500">Comienza agregando un nuevo usuario.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para agregar/editar usuario -->
+    <div id="modal-usuario" class="fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-50" style="display: none;">
+        <div class="bg-white p-6 rounded-lg w-full max-w-md">
+            <h3 id="modal-titulo-usuario" class="text-xl font-bold mb-4">Agregar Usuario</h3>
+            <form id="form-usuario">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Nombre de Usuario</label>
+                    <input type="text" id="usuario-nombre" class="w-full border border-gray-300 p-2 rounded-lg" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                    <input type="email" id="usuario-email" class="w-full border border-gray-300 p-2 rounded-lg" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
+                    <input type="password" id="usuario-password" class="w-full border border-gray-300 p-2 rounded-lg" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Tipo de Usuario</label>
+                    <select id="usuario-tipo" class="w-full border border-gray-300 p-2 rounded-lg" required>
+                        <option value="">Seleccionar tipo</option>
+                        <option value="administrador">Administrador</option>
+                        <option value="comprador">Cliente</option>
+                    </select>
+                </div>
+                <div class="flex gap-4">
+                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 flex-1">
+                        Guardar
+                    </button>
+                    <button type="button" id="btn-cancelar-usuario" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 flex-1">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
